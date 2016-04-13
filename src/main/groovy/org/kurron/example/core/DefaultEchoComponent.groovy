@@ -28,7 +28,7 @@ import org.springframework.stereotype.Component
 class DefaultEchoComponent extends AbstractFeedbackAware implements EchoComponent {
 
     @Override
-    String processMessage( final String message ) {
-        message
+    void processMessage( final String message ) {
+        println message
     }
 }

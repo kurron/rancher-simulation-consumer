@@ -17,8 +17,10 @@
 package org.kurron.example.inbound.amqp
 
 import org.kurron.example.MessagingContext
+import org.kurron.example.core.EchoComponent
 import org.kurron.feedback.AbstractFeedbackAware
 import org.kurron.stereotype.InboundGateway
+import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.cloud.stream.annotation.StreamListener
 import org.springframework.cloud.stream.messaging.Sink
 
@@ -28,8 +30,20 @@ import org.springframework.cloud.stream.messaging.Sink
 @InboundGateway
 class StreamGateway extends AbstractFeedbackAware {
 
+    /**
+     * Manages processing of the message.
+     */
+    private final EchoComponent theComponent
+
+    @Autowired
+    StreamGateway( final EchoComponent aComponent ) {
+        theComponent = aComponent
+    }
+
+    @SuppressWarnings( 'GroovyUnusedDeclaration' )
     @StreamListener( Sink.INPUT )
-    void processMessage( String  request ) {
-        feedbackProvider.sendFeedback( MessagingContext.JUST_HEARD, request )
+    void processMessage( String message ) {
+        feedbackProvider.sendFeedback( MessagingContext.JUST_HEARD, message )
+        theComponent.processMessage( message )
     }
 }
