@@ -32,7 +32,7 @@ plugins {
     id "com.jfrog.bintray" version "1.2"
 }
 
-description = 'The portion of the simulation that generates events.'
+description = 'The portion of the simulation that consumes events.'
 group = 'org.kurron.example'
 
 ext.coverageExcludes = []
