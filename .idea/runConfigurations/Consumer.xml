@@ -6,6 +6,7 @@
     <module name="consumer_main" />
     <envs>
       <env name="SPRING_RABBITMQ_HOST" value="54.187.67.220" />
+      <env name="SPRING_DATA_MONGODB_HOST" value="54.187.67.220" />
     </envs>
     <method>
       <option name="Gradle.BeforeRunTask" enabled="true" tasks="processResources" externalProjectPath="$PROJECT_DIR$/build.gradle" vmOptions="" scriptParameters="" />

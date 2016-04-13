@@ -16,7 +16,11 @@
 
 package org.kurron.example.core
 
+import org.kurron.example.MessagingContext
+import org.kurron.example.outbound.Data
+import org.kurron.example.outbound.DataRepository
 import org.kurron.feedback.AbstractFeedbackAware
+import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Component
 
 /**
@@ -27,8 +31,16 @@ import org.springframework.stereotype.Component
 @Component
 class DefaultEchoComponent extends AbstractFeedbackAware implements EchoComponent {
 
+    private final DataRepository theRepository
+
+    @Autowired
+    DefaultEchoComponent( final DataRepository aRepository ) {
+        theRepository = aRepository
+    }
+
     @Override
     void processMessage( final String message ) {
-        println message
+        feedbackProvider.sendFeedback( MessagingContext.SAVING, message )
+        theRepository.save( new Data( message: message ) )
     }
 }

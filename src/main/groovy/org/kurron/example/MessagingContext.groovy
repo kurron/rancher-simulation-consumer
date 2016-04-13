@@ -32,7 +32,8 @@ enum MessagingContext implements FeedbackContext {
     GENERIC_ERROR( 1007, FeedbackLevel.ERROR, Audience.QA, 'The following error has occurred and was caught by the global error handler: {}' ),
     VALIDATION_ERROR( 1008, FeedbackLevel.INFO, Audience.QA, 'The property {} is invalid. Cause: {}' ),
     MESSAGING_UPDATE( 1009, FeedbackLevel.INFO, Audience.QA, 'Sending {} to RabbitMQ' ),
-    JUST_HEARD( 1010, FeedbackLevel.INFO, Audience.QA, 'Just heard {} from RabbitMQ' )
+    JUST_HEARD( 1010, FeedbackLevel.INFO, Audience.QA, 'Just heard {} from RabbitMQ' ),
+    SAVING( 1011, FeedbackLevel.INFO, Audience.QA, 'Saving {} to MongoDB' )
 
     private final int code
     private final String formatString
