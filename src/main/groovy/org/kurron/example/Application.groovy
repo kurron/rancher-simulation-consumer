@@ -22,7 +22,7 @@ import org.springframework.boot.SpringApplication
 import org.springframework.boot.autoconfigure.SpringBootApplication
 import org.springframework.boot.context.properties.EnableConfigurationProperties
 import org.springframework.cloud.stream.annotation.EnableBinding
-import org.springframework.cloud.stream.messaging.Source
+import org.springframework.cloud.stream.messaging.Sink
 import org.springframework.context.annotation.Bean
 
 /**
@@ -30,7 +30,7 @@ import org.springframework.context.annotation.Bean
  */
 @Slf4j
 @SpringBootApplication
-@EnableBinding( Source )
+@EnableBinding( Sink )
 @EnableConfigurationProperties( ApplicationProperties )
 class Application {
 
