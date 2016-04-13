@@ -21,7 +21,7 @@ import org.springframework.boot.context.properties.ConfigurationProperties
 /**
  * Custom configuration properties that are driven by Spring Boot and its application.yml file.
  */
-@ConfigurationProperties( value = 'producer', ignoreUnknownFields = false )
+@ConfigurationProperties( value = 'consumer', ignoreUnknownFields = false )
 class ApplicationProperties {
 
     /**
@@ -43,9 +43,4 @@ class ApplicationProperties {
      * Logically groups a collection of services. Used in logging.
      */
     String realm
-
-    /**
-     * If true, the REST service will fail 50% of the time.
-     */
-    boolean fail
 }
