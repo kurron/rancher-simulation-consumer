@@ -16,11 +16,7 @@
 
 package org.kurron.example.core
 
-import org.kurron.example.outbound.amqp.MessagingService
-import org.kurron.example.outbound.sql.PersistentMessage
-import org.kurron.example.outbound.sql.PersistentMessageRepository
 import org.kurron.feedback.AbstractFeedbackAware
-import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Component
 
 /**
@@ -31,24 +27,8 @@ import org.springframework.stereotype.Component
 @Component
 class DefaultEchoComponent extends AbstractFeedbackAware implements EchoComponent {
 
-    /**
-     * Outbound gateway.
-     */
-    private final MessagingService gateway
-
-    private final PersistentMessageRepository repository
-
-    @Autowired
-    DefaultEchoComponent( final MessagingService aGateway,
-                          final PersistentMessageRepository aRepository ) {
-        gateway = aGateway
-        repository = aRepository
-    }
-
     @Override
     String processMessage( final String message ) {
-        gateway.send( message )
-        repository.save( new PersistentMessage( message: message ) )
         message
     }
 }
