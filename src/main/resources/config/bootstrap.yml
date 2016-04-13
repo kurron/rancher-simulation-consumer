@@ -3,4 +3,4 @@ spring:
         name: rancher-consumer
     cloud:
         config:
-            uri: http://54.186.151.15:64739
+            uri: http://54.186.151.15:63500
